@@ -1,0 +1,4 @@
+# Offline log plotting only; the simulation uses the course TeleKyb3 environment.
+numpy
+pandas
+matplotlib

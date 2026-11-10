@@ -1,0 +1,594 @@
+<?xml version="1.0" ?>
+
+<sdf version="1.5">
+  <model name="mrsim-aerial-manipulator">
+    <!-- Base Link (from mrsim-tilthex) -->
+    <link name="base">
+      <inertial>
+        <mass>2.3</mass>
+        <inertia>
+          <ixx>0.0115</ixx><ixy>0</ixy><ixz>0</ixz>
+          <iyy>0.0114</iyy><iyz>0</iyz>
+          <izz>0.0194</izz>
+        </inertia>
+      </inertial>
+
+      <collision name="base">
+        <geometry>
+          <cylinder><radius>0.1354</radius><length>0.05</length></cylinder>
+        </geometry>
+      </collision>
+      <visual name="body">
+        <geometry>
+          <cylinder><radius>0.1354</radius><length>0.05</length></cylinder>
+        </geometry>
+        <material>
+          <ambient>0.4 0.6 1.0 1</ambient>
+          <diffuse>0.4 0.6 1.0 1</diffuse>
+        </material>
+      </visual>
+
+      <collision name="lander-1_col">
+        <pose>0.1025 0.1776 -0.11 3.1416 -0.1736 1.0472</pose>
+        <geometry>
+          <cylinder><radius>0.01</radius><length>0.25</length></cylinder>
+        </geometry>
+      </collision>
+      <visual name="lander-1">
+        <pose>0.1025 0.1776 -0.11 3.1416 -0.1736 1.0472</pose>
+        <geometry>
+          <cylinder><radius>0.01</radius><length>0.25</length></cylinder>
+        </geometry>
+        <material>
+          <ambient>0 0 0 1.0</ambient>
+          <diffuse>0 0 0 1.0</diffuse>
+        </material>
+      </visual>
+
+      <collision name="lander-2_col">
+        <pose>-0.1025 0.1776 -0.11 3.1416 -0.1736 2.0944</pose>
+        <geometry>
+          <cylinder><radius>0.01</radius><length>0.25</length></cylinder>
+        </geometry>
+      </collision>
+      <visual name="lander-2">
+        <pose>-0.1025 0.1776 -0.11 3.1416 -0.1736 2.0944</pose>
+        <geometry>
+          <cylinder><radius>0.01</radius><length>0.25</length></cylinder>
+        </geometry>
+        <material>
+          <ambient>0 0 0 1.0</ambient>
+          <diffuse>0 0 0 1.0</diffuse>
+        </material>
+      </visual>
+
+      <collision name="lander-3_col">
+        <pose>-0.1025 -0.1776 -0.11 3.1416 0.1736 1.0472</pose>
+        <geometry>
+          <cylinder><radius>0.01</radius><length>0.25</length></cylinder>
+        </geometry>
+      </collision>
+      <visual name="lander-3">
+        <pose>-0.1025 -0.1776 -0.11 3.1416 0.1736 1.0472</pose>
+        <geometry>
+          <cylinder><radius>0.01</radius><length>0.25</length></cylinder>
+        </geometry>
+        <material>
+          <ambient>0 0 0 1.0</ambient>
+          <diffuse>0 0 0 1.0</diffuse>
+        </material>
+      </visual>
+
+      <collision name="lander-4_col">
+        <pose>0.1025 -0.1776 -0.11 3.1416 0.1736 2.0944</pose>
+        <geometry>
+          <cylinder><radius>0.01</radius><length>0.25</length></cylinder>
+        </geometry>
+      </collision>
+      <visual name="lander-4">
+        <pose>0.1025 -0.1776 -0.11 3.1416 0.1736 2.0944</pose>
+        <geometry>
+          <cylinder><radius>0.01</radius><length>0.25</length></cylinder>
+        </geometry>
+        <material>
+          <ambient>0 0 0 1.0</ambient>
+          <diffuse>0 0 0 1.0</diffuse>
+        </material>
+      </visual>
+
+      <collision name="arm-1_col">
+        <pose>0.2150 0 0 0 1.5708 0</pose>
+        <geometry>
+          <cylinder><radius>0.01</radius><length>0.38998</length></cylinder>
+        </geometry>
+      </collision>
+      <visual name="arm-1">
+        <pose>0.2150 0 0 0 1.5708 0</pose>
+        <geometry>
+          <cylinder><radius>0.01</radius><length>0.38998</length></cylinder>
+        </geometry>
+        <material>
+          <ambient>1.0 0.2 0.2 1.0</ambient>
+          <diffuse>1.0 0.2 0.2 1.0</diffuse>
+        </material>
+      </visual>
+      <collision name="arm-2_col">
+        <pose>0.1025 0.1776 0 0 1.5708 1.0472</pose>
+        <geometry>
+          <cylinder><radius>0.01</radius><length>0.40998</length></cylinder>
+        </geometry>
+      </collision>
+      <visual name="arm-2">
+        <pose>0.1025 0.1776 0 0 1.5708 1.0472</pose>
+        <geometry>
+          <cylinder><radius>0.01</radius><length>0.40998</length></cylinder>
+        </geometry>
+        <material>
+          <ambient>0.6 0.6 0.6 1</ambient>
+          <diffuse>0.6 0.6 0.6 1</diffuse>
+        </material>
+      </visual>
+      <collision name="arm-3_col">
+        <pose>-0.1025 0.1776 0 0 1.5708 2.0944</pose>
+        <geometry>
+          <cylinder><radius>0.01</radius><length>0.40998</length></cylinder>
+        </geometry>
+      </collision>
+      <visual name="arm-3">
+        <pose>-0.1025 0.1776 0 0 1.5708 2.0944</pose>
+        <geometry>
+          <cylinder><radius>0.01</radius><length>0.40998</length></cylinder>
+        </geometry>
+        <material>
+          <ambient>0.6 0.6 0.6 1</ambient>
+          <diffuse>0.6 0.6 0.6 1</diffuse>
+        </material>
+      </visual>
+      <collision name="arm-4_col">
+        <pose>-0.2150 0 0 0 1.5708 0</pose>
+        <geometry>
+          <cylinder><radius>0.01</radius><length>0.38998</length></cylinder>
+        </geometry>
+      </collision>
+      <visual name="arm-4">
+        <pose>-0.2150 0 0 0 1.5708 0</pose>
+        <geometry>
+          <cylinder><radius>0.01</radius><length>0.38998</length></cylinder>
+        </geometry>
+        <material>
+          <ambient>0.6 0.6 0.6 1</ambient>
+          <diffuse>0.6 0.6 0.6 1</diffuse>
+        </material>
+      </visual>
+      <collision name="arm-5_col">
+        <pose>-0.1025 -0.1776 0 0 1.5708 -2.0944</pose>
+        <geometry>
+          <cylinder><radius>0.01</radius><length>0.40998</length></cylinder>
+        </geometry>
+      </collision>
+      <visual name="arm-5">
+        <pose>-0.1025 -0.1776 0 0 1.5708 -2.0944</pose>
+        <geometry>
+          <cylinder><radius>0.01</radius><length>0.40998</length></cylinder>
+        </geometry>
+        <material>
+          <ambient>0.6 0.6 0.6 1</ambient>
+          <diffuse>0.6 0.6 0.6 1</diffuse>
+        </material>
+      </visual>
+      <collision name="arm-6_col">
+        <pose>0.1025 -0.1776 0 0 1.5708 -1.0472</pose>
+        <geometry>
+          <cylinder><radius>0.01</radius><length>0.40998</length></cylinder>
+        </geometry>
+      </collision>
+      <visual name="arm-6">
+        <pose>0.1025 -0.1776 0 0 1.5708 -1.0472</pose>
+        <geometry>
+          <cylinder><radius>0.01</radius><length>0.40998</length></cylinder>
+        </geometry>
+        <material>
+          <ambient>0.6 0.6 0.6 1</ambient>
+          <diffuse>0.6 0.6 0.6 1</diffuse>
+        </material>
+      </visual>
+    </link>
+
+    <!-- Rotors -->
+    <include>
+      <uri>model://mrsim-rotor</uri>
+      <name>rotor-1</name>
+      <pose>0.38998 0 0 2.7925 -0.3491 0</pose>
+    </include>
+    <joint name="motor-1" type="revolute">
+      <parent>base</parent>
+      <child>rotor-1::propeller</child>
+      <axis><xyz>0 0 -1</xyz></axis>
+    </joint>
+
+    <include>
+      <uri>model://mrsim-rotor</uri>
+      <name>rotor-2</name>
+      <pose>0.195 0.3377 0 -2.7925 -0.3491 1.0472</pose>
+    </include>
+    <joint name="motor-2" type="revolute">
+      <parent>base</parent>
+      <child>rotor-2::propeller</child>
+      <axis><xyz>0 0 -1</xyz></axis>
+    </joint>
+
+    <include>
+      <uri>model://mrsim-rotor</uri>
+      <name>rotor-3</name>
+      <pose>-0.195 0.3377 0 2.7925 -0.3491 2.0944</pose>
+    </include>
+    <joint name="motor-3" type="revolute">
+      <parent>base</parent>
+      <child>rotor-3::propeller</child>
+      <axis><xyz>0 0 -1</xyz></axis>
+    </joint>
+
+    <include>
+      <uri>model://mrsim-rotor</uri>
+      <name>rotor-4</name>
+      <pose>-0.38998 0 0 -3.4907 0.3491 0</pose>
+    </include>
+    <joint name="motor-4" type="revolute">
+      <parent>base</parent>
+      <child>rotor-4::propeller</child>
+      <axis><xyz>0 0 -1</xyz></axis>
+    </joint>
+
+    <include>
+      <uri>model://mrsim-rotor</uri>
+      <name>rotor-5</name>
+      <pose>-0.195 -0.3377 0 -2.7925 0.3491 1.0472</pose>
+    </include>
+    <joint name="motor-5" type="revolute">
+      <parent>base</parent>
+      <child>rotor-5::propeller</child>
+      <axis><xyz>0 0 -1</xyz></axis>
+    </joint>
+
+    <include>
+      <uri>model://mrsim-rotor</uri>
+      <name>rotor-6</name>
+      <pose>0.195 -0.3377 0 2.7925 0.3491 2.0944</pose>
+    </include>
+    <joint name="motor-6" type="revolute">
+      <parent>base</parent>
+      <child>rotor-6::propeller</child>
+      <axis><xyz>0 0 -1</xyz></axis>
+    </joint>
+
+    <plugin name="mrsim" filename="mrsim-gazebo.so">
+      <link>base</link>
+
+      <rotors>
+        <noise>0.03</noise>
+        <cf>9.9016e-4</cf>
+        <ct>1.9e-5</ct>
+        <vfxy>0.5</vfxy><vfz>0.5</vfz>
+        <vtxy>0.5</vtxy><vtz>0.5</vtz>
+
+        <rotor><joint spin="cw">motor-1</joint></rotor>
+        <rotor><joint spin="ccw">motor-2</joint></rotor>
+        <rotor><joint spin="cw">motor-3</joint></rotor>
+        <rotor><joint spin="ccw">motor-4</joint></rotor>
+        <rotor><joint spin="cw">motor-5</joint></rotor>
+        <rotor><joint spin="ccw">motor-6</joint></rotor>
+      </rotors>
+    </plugin>
+
+    <!-- ============================================== -->
+    <!-- 3-DoF Robotic Arm                              -->
+    <!-- ============================================== -->
+
+    <!-- Link 1 (Shoulder Yaw) -->
+    <link name="arm_link_1">
+      <pose>0 0 -0.1 0 0 0</pose>
+      <inertial>
+        <mass>0.05</mass>
+        <inertia><ixx>0.00001</ixx><ixy>0</ixy><ixz>0</ixz><iyy>0.00001</iyy><iyz>0</iyz><izz>0.00001</izz></inertia>
+      </inertial>
+      <visual name="arm_1_vis">
+        <pose>0 0 0.0125 0 0 0</pose>
+        <geometry><cylinder><radius>0.02</radius><length>0.125</length></cylinder></geometry>
+        <material>
+          <ambient>0.2 0.8 0.2 1</ambient>
+          <diffuse>0.2 0.8 0.2 1</diffuse>
+        </material>
+      </visual>
+      <collision name="arm_1_col">
+        <pose>0 0 0.0125 0 0 0</pose>
+        <geometry><cylinder><radius>0.02</radius><length>0.125</length></cylinder></geometry>
+      </collision>
+    </link>
+
+    <joint name="arm_joint_1" type="revolute">
+      <parent>base</parent>
+      <child>arm_link_1</child>
+      <pose>0 0 0 0 0 0</pose> <!-- joint located at origin of arm_link_1 -->
+      <axis>
+        <xyz>0 0 1</xyz> <!-- Yaw -->
+        <dynamics><damping>2.0</damping><friction>0.0</friction></dynamics>
+        <!-- damping aumentato da 1.0 a 2.0: più smorzamento meccanico →
+             transiente del braccio più morbido → minore coppia di reazione
+             impulsiva sul drone durante le fasi di avvio/stop del braccio. -->
+        <limit>
+          <lower>-3.14159</lower>
+          <upper>3.14159</upper>
+          <effort>10</effort>
+          <velocity>5</velocity>
+        </limit>
+      </axis>
+    </joint>
+
+    <!-- Link 2 (Shoulder Pitch) -->
+    <link name="arm_link_2">
+      <pose>0 0 -0.15 0 0 0</pose>
+      <inertial>
+        <pose>0.075 0 0 0 0 0</pose>
+        <mass>0.05</mass>
+        <inertia><ixx>0.00001</ixx><ixy>0</ixy><ixz>0</ixz><iyy>0.0001</iyy><iyz>0</iyz><izz>0.0001</izz></inertia>
+      </inertial>
+      <visual name="arm_2_vis">
+        <pose>0.075 0 0 0 1.570796 0</pose>
+        <geometry><cylinder><radius>0.01</radius><length>0.15</length></cylinder></geometry>
+        <material>
+          <ambient>0.8 0.2 0.2 1</ambient>
+          <diffuse>0.8 0.2 0.2 1</diffuse>
+        </material>
+      </visual>
+      <collision name="arm_2_col">
+        <pose>0.075 0 0 0 1.570796 0</pose>
+        <geometry><cylinder><radius>0.01</radius><length>0.15</length></cylinder></geometry>
+      </collision>
+    </link>
+
+    <joint name="arm_joint_2" type="revolute">
+      <parent>arm_link_1</parent>
+      <child>arm_link_2</child>
+      <pose>0 0 0 0 0 0</pose> <!-- joint located at origin of arm_link_2 -->
+      <axis>
+        <xyz>0 1 0</xyz> <!-- Pitch -->
+        <dynamics><damping>2.0</damping><friction>0.0</friction></dynamics>
+        <!-- damping aumentato da 1.0 a 2.0: j2 è il giunto che crea il momento
+             di pitch più grande sul drone (braccio oscilla in piano verticale).
+             Più smorzamento → transiente più lungo ma coppie di reazione minori. -->
+        <limit>
+          <lower>-1.570796</lower>
+          <upper>1.570796</upper>
+          <effort>10</effort>
+          <velocity>5</velocity>
+        </limit>
+      </axis>
+    </joint>
+
+    <!-- Link 3 (Elbow Pitch) -->
+    <link name="arm_link_3">
+      <pose>0.15 0 -0.15 0 0 0</pose>
+      <inertial>
+        <pose>0.075 0 0 0 0 0</pose>
+        <mass>0.05</mass>
+        <inertia><ixx>0.00001</ixx><ixy>0</ixy><ixz>0</ixz><iyy>0.0001</iyy><iyz>0</iyz><izz>0.0001</izz></inertia>
+      </inertial>
+      <visual name="arm_3_vis">
+        <pose>0.075 0 0 0 1.570796 0</pose>
+        <geometry><cylinder><radius>0.01</radius><length>0.15</length></cylinder></geometry>
+        <material>
+          <ambient>0.2 0.2 0.8 1</ambient>
+          <diffuse>0.2 0.2 0.8 1</diffuse>
+        </material>
+      </visual>
+      <collision name="arm_3_col">
+        <pose>0.075 0 0 0 1.570796 0</pose>
+        <geometry><cylinder><radius>0.01</radius><length>0.15</length></cylinder></geometry>
+      </collision>
+    </link>
+
+    <joint name="arm_joint_3" type="revolute">
+      <parent>arm_link_2</parent>
+      <child>arm_link_3</child>
+      <pose>0 0 0 0 0 0</pose> <!-- joint located at origin of arm_link_3 -->
+      <axis>
+        <xyz>0 1 0</xyz> <!-- Pitch -->
+        <dynamics><damping>2.0</damping><friction>0.0</friction></dynamics>
+        <!-- Limite gomito esteso a ±135°: il pick reale richiede spesso
+             95-110° quando il drone resta sopra/alquanto vicino al cubo. -->
+        <limit>
+          <lower>-2.35</lower>
+          <upper>2.35</upper>
+          <effort>12</effort>
+          <velocity>5</velocity>
+        </limit>
+      </axis>
+    </joint>
+
+    <!-- ============================================== -->
+    <!-- Gripper (End Effector)                         -->
+    <!-- ============================================== -->
+
+    <!-- Gripper Base (Palm) -->
+    <link name="gripper_base">
+      <pose>0.31 0 -0.15 0 0 0</pose>
+      <inertial>
+        <mass>0.02</mass>
+        <inertia><ixx>0.00001</ixx><ixy>0</ixy><ixz>0</ixz><iyy>0.00001</iyy><iyz>0</iyz><izz>0.00001</izz></inertia>
+      </inertial>
+      <visual name="gripper_base_vis">
+        <geometry><box><size>0.02 0.08 0.02</size></box></geometry>
+        <material>
+          <ambient>0.3 0.3 0.3 1</ambient>
+          <diffuse>0.3 0.3 0.3 1</diffuse>
+        </material>
+      </visual>
+      <collision name="gripper_base_col">
+        <geometry><box><size>0.02 0.08 0.02</size></box></geometry>
+      </collision>
+    </link>
+
+    <joint name="gripper_base_joint" type="fixed">
+      <parent>arm_link_3</parent>
+      <child>gripper_base</child>
+    </joint>
+
+    <!-- Right Finger -->
+    <link name="right_finger">
+      <pose>0.345 -0.035 -0.15 0 0 0</pose>
+      <inertial>
+        <mass>0.01</mass>
+        <inertia><ixx>0.000001</ixx><ixy>0</ixy><ixz>0</ixz><iyy>0.000001</iyy><iyz>0</iyz><izz>0.000001</izz></inertia>
+      </inertial>
+      <visual name="rf_vis">
+        <geometry><box><size>0.05 0.01 0.02</size></box></geometry>
+        <material>
+          <ambient>0.8 0.2 0.2 1</ambient>
+          <diffuse>0.8 0.2 0.2 1</diffuse>
+        </material>
+      </visual>
+      <collision name="rf_col">
+        <surface>
+          <friction>
+            <ode><mu>4.0</mu><mu2>4.0</mu2></ode>
+          </friction>
+          <contact>
+            <ode><kp>1000000</kp><kd>1000</kd><max_vel>0.05</max_vel><min_depth>0.001</min_depth></ode>
+          </contact>
+        </surface>
+        <geometry><box><size>0.05 0.01 0.02</size></box></geometry>
+      </collision>
+    </link>
+
+    <joint name="right_finger_joint" type="prismatic">
+      <parent>gripper_base</parent>
+      <child>right_finger</child>
+      <pose>0 0 0 0 0 0</pose>
+      <axis>
+        <xyz>0 1 0</xyz> <!-- Moves inwards towards Y=0 -->
+        <limit>
+          <lower>-0.02</lower> <!-- -2cm: dita aperte più di default (clearance cubo 3cm/lato) -->
+          <upper>0.03</upper> <!-- Can move 3cm inwards -->
+          <effort>60</effort>
+          <velocity>1</velocity>
+        </limit>
+      </axis>
+    </joint>
+
+    <!-- Left Finger -->
+    <link name="left_finger">
+      <pose>0.345 0.035 -0.15 0 0 0</pose>
+      <inertial>
+        <mass>0.01</mass>
+        <inertia><ixx>0.000001</ixx><ixy>0</ixy><ixz>0</ixz><iyy>0.000001</iyy><iyz>0</iyz><izz>0.000001</izz></inertia>
+      </inertial>
+      <visual name="lf_vis">
+        <geometry><box><size>0.05 0.01 0.02</size></box></geometry>
+        <material>
+          <ambient>0.8 0.2 0.2 1</ambient>
+          <diffuse>0.8 0.2 0.2 1</diffuse>
+        </material>
+      </visual>
+      <collision name="lf_col">
+        <surface>
+          <friction>
+            <ode><mu>4.0</mu><mu2>4.0</mu2></ode>
+          </friction>
+          <contact>
+            <ode><kp>1000000</kp><kd>1000</kd><max_vel>0.05</max_vel><min_depth>0.001</min_depth></ode>
+          </contact>
+        </surface>
+        <geometry><box><size>0.05 0.01 0.02</size></box></geometry>
+      </collision>
+    </link>
+
+    <joint name="left_finger_joint" type="prismatic">
+      <parent>gripper_base</parent>
+      <child>left_finger</child>
+      <pose>0 0 0 0 0 0</pose>
+      <axis>
+        <xyz>0 -1 0</xyz> <!-- Moves inwards towards Y=0 -->
+        <limit>
+          <lower>-0.02</lower> <!-- -2cm: dita aperte più di default (clearance cubo 3cm/lato) -->
+          <upper>0.03</upper> <!-- Can move 3cm inwards -->
+          <effort>60</effort>
+          <velocity>1</velocity>
+        </limit>
+      </axis>
+    </joint>
+
+    <!-- ============================================== -->
+    <!-- Dynamixel Simulation Plugin (joint arm 1-3)    -->
+    <!-- ============================================== -->
+
+    <!--
+      NOTA: i giunti delle dita (left_finger_joint, right_finger_joint) sono
+      PRISMATICI. Il plugin dxsim-gazebo.so chiama Joint::Type() e scarta
+      qualsiasi giunto non-revolute ("ignoring joint ... not of the hinge type").
+      Il sorgente (robotpkg-dxsim-gazebo v2.1, openrobots@laas.fr) non è
+      disponibile nel container, quindi non è ricompilabile.
+      Le dita vengono controllate tramite gz::sim::systems::JointPositionController
+      via "gz topic", come in ground_arm. Il topic usa il nome modello "fahexa"
+      (nome assegnato nell'include del world file).
+    -->
+
+    <plugin name="dxsim" filename="dxsim-gazebo.so">
+      <pty>/tmp/pty-fahexa-arm</pty>
+      <motors>
+        <motor>
+          <joint spin="ccw">arm_joint_1</joint>
+          <eeprom>/tmp/dxsim-fahexa-id1</eeprom>
+          <model>MX64T</model>
+          <id>1</id>
+          <noise>0</noise>
+          <debug>0</debug>
+        </motor>
+        <motor>
+          <joint spin="ccw">arm_joint_2</joint>
+          <eeprom>/tmp/dxsim-fahexa-id2</eeprom>
+          <model>MX64T</model>
+          <id>2</id>
+          <noise>0</noise>
+          <debug>0</debug>
+        </motor>
+        <motor>
+          <joint spin="ccw">arm_joint_3</joint>
+          <eeprom>/tmp/dxsim-fahexa-id3</eeprom>
+          <model>MX64T</model>
+          <id>3</id>
+          <noise>0</noise>
+          <debug>0</debug>
+        </motor>
+      </motors>
+    </plugin>
+
+    <!-- Gripper: JointPositionController per left_finger_joint -->
+    <plugin filename="gz-sim-joint-position-controller-system"
+            name="gz::sim::systems::JointPositionController">
+      <joint_name>left_finger_joint</joint_name>
+      <topic>/model/fahexa/joint/left_finger_joint/cmd_pos</topic>
+      <p_gain>450</p_gain>
+      <i_gain>0.15</i_gain>
+      <d_gain>5.0</d_gain>
+      <i_max>3</i_max>
+      <i_min>-3</i_min>
+      <cmd_max>60</cmd_max>
+      <cmd_min>-60</cmd_min>
+    </plugin>
+
+    <!-- Gripper: JointPositionController per right_finger_joint -->
+    <plugin filename="gz-sim-joint-position-controller-system"
+            name="gz::sim::systems::JointPositionController">
+      <joint_name>right_finger_joint</joint_name>
+      <topic>/model/fahexa/joint/right_finger_joint/cmd_pos</topic>
+      <p_gain>450</p_gain>
+      <i_gain>0.15</i_gain>
+      <d_gain>5.0</d_gain>
+      <i_max>3</i_max>
+      <i_min>-3</i_min>
+      <cmd_max>60</cmd_max>
+      <cmd_min>-60</cmd_min>
+    </plugin>
+
+  </model>
+</sdf>

@@ -1,0 +1,363 @@
+<?xml version="1.0" ?>
+
+<sdf version="1.5">
+  <model name="ground_arm">
+
+    <self_collide>true</self_collide>
+
+    <!-- ============================================== -->
+    <!-- Fixed Pedestal                                 -->
+    <!-- ============================================== -->
+
+    <link name="base">
+      <inertial>
+        <mass>5.0</mass>
+        <inertia>
+          <ixx>0.05</ixx><ixy>0</ixy><ixz>0</ixz>
+          <iyy>0.05</iyy><iyz>0</iyz>
+          <izz>0.08</izz>
+        </inertia>
+      </inertial>
+      <visual name="base_vis">
+        <pose>0 0 0.075 0 0 0</pose>
+        <geometry><cylinder><radius>0.10</radius><length>0.15</length></cylinder></geometry>
+        <material>
+          <ambient>0.3 0.3 0.3 1</ambient>
+          <diffuse>0.3 0.3 0.3 1</diffuse>
+        </material>
+      </visual>
+      <collision name="base_col">
+        <pose>0 0 0.075 0 0 0</pose>
+        <geometry><cylinder><radius>0.10</radius><length>0.15</length></cylinder></geometry>
+      </collision>
+    </link>
+
+    <!-- Fix base to world -->
+    <joint name="base_joint" type="fixed">
+      <parent>world</parent>
+      <child>base</child>
+    </joint>
+
+    <!-- ============================================== -->
+    <!-- 3-DoF Robotic Arm                              -->
+    <!-- ============================================== -->
+
+    <!-- Link 1 (Shoulder Yaw) -->
+    <!-- Vertical hub on top of pedestal, z=0.15..0.30 -->
+    <link name="arm_link_1">
+      <pose>0 0 0.15 0 0 0</pose>
+      <inertial>
+        <mass>0.1</mass>
+        <inertia><ixx>0.0001</ixx><ixy>0</ixy><ixz>0</ixz><iyy>0.0001</iyy><iyz>0</iyz><izz>0.0001</izz></inertia>
+      </inertial>
+      <visual name="arm_1_vis">
+        <pose>0 0 0.075 0 0 0</pose>
+        <geometry><cylinder><radius>0.025</radius><length>0.15</length></cylinder></geometry>
+        <material>
+          <ambient>0.2 0.8 0.2 1</ambient>
+          <diffuse>0.2 0.8 0.2 1</diffuse>
+        </material>
+      </visual>
+      <collision name="arm_1_col">
+        <pose>0 0 0.075 0 0 0</pose>
+        <geometry><cylinder><radius>0.025</radius><length>0.15</length></cylinder></geometry>
+      </collision>
+    </link>
+
+    <joint name="arm_joint_1" type="revolute">
+      <parent>base</parent>
+      <child>arm_link_1</child>
+      <pose>0 0 0 0 0 0</pose>
+      <axis>
+        <xyz>0 0 1</xyz> <!-- Yaw -->
+        <dynamics>
+          <damping>5.0</damping>
+          <friction>0.0</friction>
+        </dynamics>
+        <limit>
+          <lower>-3.14159</lower>
+          <upper>3.14159</upper>
+          <effort>20</effort>
+          <velocity>5</velocity>
+        </limit>
+      </axis>
+    </joint>
+
+    <!-- Link 2 (Shoulder Pitch) -->
+    <!-- Horizontal segment from x=0 to x=0.30, at z=0.30 -->
+    <link name="arm_link_2">
+      <pose>0 0 0.30 0 0 0</pose>
+      <inertial>
+        <pose>0.15 0 0 0 0 0</pose>
+        <mass>0.1</mass>
+        <inertia><ixx>0.0001</ixx><ixy>0</ixy><ixz>0</ixz><iyy>0.001</iyy><iyz>0</iyz><izz>0.001</izz></inertia>
+      </inertial>
+      <visual name="arm_2_vis">
+        <pose>0.15 0 0 0 1.570796 0</pose>
+        <geometry><cylinder><radius>0.015</radius><length>0.30</length></cylinder></geometry>
+        <material>
+          <ambient>0.8 0.2 0.2 1</ambient>
+          <diffuse>0.8 0.2 0.2 1</diffuse>
+        </material>
+      </visual>
+      <collision name="arm_2_col">
+        <pose>0.15 0 0 0 1.570796 0</pose>
+        <geometry><cylinder><radius>0.015</radius><length>0.30</length></cylinder></geometry>
+      </collision>
+    </link>
+
+    <joint name="arm_joint_2" type="revolute">
+      <parent>arm_link_1</parent>
+      <child>arm_link_2</child>
+      <pose>0 0 0 0 0 0</pose>
+      <axis>
+        <xyz>0 1 0</xyz> <!-- Pitch -->
+        <dynamics>
+          <damping>5.0</damping>
+          <friction>0.0</friction>
+        </dynamics>
+        <limit>
+          <lower>-1.570796</lower>
+          <upper>1.570796</upper>
+          <effort>20</effort>
+          <velocity>5</velocity>
+        </limit>
+      </axis>
+    </joint>
+
+    <!-- Link 3 (Elbow Pitch) -->
+    <!-- Horizontal segment from x=0.30 to x=0.55, at z=0.30 -->
+    <link name="arm_link_3">
+      <pose>0.30 0 0.30 0 0 0</pose>
+      <inertial>
+        <pose>0.125 0 0 0 0 0</pose>
+        <mass>0.1</mass>
+        <inertia><ixx>0.0001</ixx><ixy>0</ixy><ixz>0</ixz><iyy>0.0008</iyy><iyz>0</iyz><izz>0.0008</izz></inertia>
+      </inertial>
+      <visual name="arm_3_vis">
+        <pose>0.125 0 0 0 1.570796 0</pose>
+        <geometry><cylinder><radius>0.015</radius><length>0.25</length></cylinder></geometry>
+        <material>
+          <ambient>0.2 0.2 0.8 1</ambient>
+          <diffuse>0.2 0.2 0.8 1</diffuse>
+        </material>
+      </visual>
+      <collision name="arm_3_col">
+        <pose>0.125 0 0 0 1.570796 0</pose>
+        <geometry><cylinder><radius>0.015</radius><length>0.25</length></cylinder></geometry>
+      </collision>
+    </link>
+
+    <joint name="arm_joint_3" type="revolute">
+      <parent>arm_link_2</parent>
+      <child>arm_link_3</child>
+      <pose>0 0 0 0 0 0</pose>
+      <axis>
+        <xyz>0 1 0</xyz> <!-- Pitch -->
+        <dynamics>
+          <damping>5.0</damping>
+          <friction>0.0</friction>
+        </dynamics>
+        <limit>
+          <lower>-1.570796</lower>
+          <upper>1.570796</upper>
+          <effort>20</effort>
+          <velocity>5</velocity>
+        </limit>
+      </axis>
+    </joint>
+
+    <!-- ============================================== -->
+    <!-- Gripper (End Effector)                         -->
+    <!-- ============================================== -->
+
+    <!-- Gripper Base (Palm) -->
+    <link name="gripper_base">
+      <pose>0.55 0 0.30 0 0 0</pose>
+      <inertial>
+        <mass>0.03</mass>
+        <inertia><ixx>0.00001</ixx><ixy>0</ixy><ixz>0</ixz><iyy>0.00001</iyy><iyz>0</iyz><izz>0.00001</izz></inertia>
+      </inertial>
+      <visual name="gripper_base_vis">
+        <geometry><box><size>0.025 0.10 0.025</size></box></geometry>
+        <material>
+          <ambient>0.3 0.3 0.3 1</ambient>
+          <diffuse>0.3 0.3 0.3 1</diffuse>
+        </material>
+      </visual>
+      <collision name="gripper_base_col">
+        <geometry><box><size>0.025 0.10 0.025</size></box></geometry>
+      </collision>
+    </link>
+
+    <joint name="gripper_base_joint" type="fixed">
+      <parent>arm_link_3</parent>
+      <child>gripper_base</child>
+    </joint>
+
+    <!-- Right Finger -->
+    <link name="right_finger">
+      <pose>0.59 -0.045 0.30 0 0 0</pose>
+      <inertial>
+        <mass>0.01</mass>
+        <inertia><ixx>0.000001</ixx><ixy>0</ixy><ixz>0</ixz><iyy>0.000001</iyy><iyz>0</iyz><izz>0.000001</izz></inertia>
+      </inertial>
+      <visual name="rf_vis">
+        <geometry><box><size>0.06 0.015 0.025</size></box></geometry>
+        <material>
+          <ambient>0.8 0.2 0.2 1</ambient>
+          <diffuse>0.8 0.2 0.2 1</diffuse>
+        </material>
+      </visual>
+      <collision name="rf_col">
+        <surface>
+          <friction><ode><mu>1.0</mu><mu2>1.0</mu2></ode></friction>
+        </surface>
+        <geometry><box><size>0.06 0.015 0.025</size></box></geometry>
+      </collision>
+    </link>
+
+    <joint name="right_finger_joint" type="prismatic">
+      <parent>gripper_base</parent>
+      <child>right_finger</child>
+      <axis>
+        <xyz>0 1 0</xyz> <!-- Closes inward toward Y=0 -->
+        <limit>
+          <lower>0</lower>
+          <upper>0.04</upper>
+          <effort>10</effort>
+          <velocity>1</velocity>
+        </limit>
+      </axis>
+    </joint>
+
+    <!-- Left Finger -->
+    <link name="left_finger">
+      <pose>0.59 0.045 0.30 0 0 0</pose>
+      <inertial>
+        <mass>0.01</mass>
+        <inertia><ixx>0.000001</ixx><ixy>0</ixy><ixz>0</ixz><iyy>0.000001</iyy><iyz>0</iyz><izz>0.000001</izz></inertia>
+      </inertial>
+      <visual name="lf_vis">
+        <geometry><box><size>0.06 0.015 0.025</size></box></geometry>
+        <material>
+          <ambient>0.8 0.2 0.2 1</ambient>
+          <diffuse>0.8 0.2 0.2 1</diffuse>
+        </material>
+      </visual>
+      <collision name="lf_col">
+        <surface>
+          <friction><ode><mu>1.0</mu><mu2>1.0</mu2></ode></friction>
+        </surface>
+        <geometry><box><size>0.06 0.015 0.025</size></box></geometry>
+      </collision>
+    </link>
+
+    <joint name="left_finger_joint" type="prismatic">
+      <parent>gripper_base</parent>
+      <child>left_finger</child>
+      <axis>
+        <xyz>0 -1 0</xyz> <!-- Closes inward toward Y=0 -->
+        <limit>
+          <lower>0</lower>
+          <upper>0.04</upper>
+          <effort>10</effort>
+          <velocity>1</velocity>
+        </limit>
+      </axis>
+    </joint>
+
+    <!-- ============================================== -->
+    <!-- Dynamixel Simulation Plugin                    -->
+    <!-- ============================================== -->
+
+    <!--
+      NOTA: i giunti delle dita (left_finger_joint, right_finger_joint) sono
+      di tipo PRISMATICO. Il plugin dxsim-gazebo.so chiama Joint::Type() e
+      scarta qualsiasi giunto non-revolute con il messaggio "ignoring invalid
+      joint". Il sorgente di dxsim (pacchetto robotpkg-dxsim-gazebo v2.1,
+      maintainer openrobots@laas.fr) non è disponibile nel container, quindi
+      non è possibile ricompilarlo con supporto prismatico.
+
+      Per questo motivo le dita sono controllate con il plugin built-in di
+      Gazebo Ionic (JointPositionController), che supporta qualsiasi tipo di
+      giunto. Il comando arriva via gz topic da motion_arm.py invece che dal
+      componente GenoM dynamixel.
+    -->
+
+    <plugin name="dxsim" filename="dxsim-gazebo.so">
+      <pty>/tmp/pty-ground-arm</pty>
+      <motors>
+        <motor>
+          <joint spin="ccw">arm_joint_1</joint>
+          <eeprom>/tmp/dxsim-ground-arm-id1</eeprom>
+          <model>MX64T</model>
+          <id>1</id>
+          <noise>0</noise>
+          <debug>0</debug>
+        </motor>
+        <motor>
+          <joint spin="ccw">arm_joint_2</joint>
+          <eeprom>/tmp/dxsim-ground-arm-id2</eeprom>
+          <model>MX64T</model>
+          <id>2</id>
+          <noise>0</noise>
+          <debug>0</debug>
+        </motor>
+        <motor>
+          <joint spin="ccw">arm_joint_3</joint>
+          <eeprom>/tmp/dxsim-ground-arm-id3</eeprom>
+          <model>MX64T</model>
+          <id>3</id>
+          <noise>0</noise>
+          <debug>0</debug>
+        </motor>
+        <motor>
+          <joint spin="ccw">left_finger_joint</joint>
+          <eeprom>/tmp/dxsim-ground-arm-id4</eeprom>
+          <model>MX64T</model>
+          <id>4</id>
+          <noise>0</noise>
+          <debug>0</debug>
+        </motor>
+        <motor>
+          <joint spin="ccw">right_finger_joint</joint>
+          <eeprom>/tmp/dxsim-ground-arm-id5</eeprom>
+          <model>MX64T</model>
+          <id>5</id>
+          <noise>0</noise>
+          <debug>0</debug>
+        </motor>
+      </motors>
+    </plugin>
+
+    <!-- Gripper: JointPositionController per left_finger_joint -->
+    <plugin filename="gz-sim-joint-position-controller-system"
+            name="gz::sim::systems::JointPositionController">
+      <joint_name>left_finger_joint</joint_name>
+      <topic>/model/ground_arm/joint/left_finger_joint/cmd_pos</topic>
+      <p_gain>100</p_gain>
+      <i_gain>0.1</i_gain>
+      <d_gain>1.0</d_gain>
+      <i_max>1</i_max>
+      <i_min>-1</i_min>
+      <cmd_max>10</cmd_max>
+      <cmd_min>-10</cmd_min>
+    </plugin>
+
+    <!-- Gripper: JointPositionController per right_finger_joint -->
+    <plugin filename="gz-sim-joint-position-controller-system"
+            name="gz::sim::systems::JointPositionController">
+      <joint_name>right_finger_joint</joint_name>
+      <topic>/model/ground_arm/joint/right_finger_joint/cmd_pos</topic>
+      <p_gain>100</p_gain>
+      <i_gain>0.1</i_gain>
+      <d_gain>1.0</d_gain>
+      <i_max>1</i_max>
+      <i_min>-1</i_min>
+      <cmd_max>10</cmd_max>
+      <cmd_min>-10</cmd_min>
+    </plugin>
+
+  </model>
+</sdf>

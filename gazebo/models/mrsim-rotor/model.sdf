@@ -1,0 +1,54 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <model name="mrsim-rotor">
+    <link name="propeller">
+      <pose>0 0 0.04 0 0 0</pose> <!-- blade center where the wrench is applied -->
+      <inertial>
+        <mass>0.07</mass>
+        <inertia>
+          <ixx>4e-5</ixx><ixy>0</ixy><ixz>0</ixz>
+          <iyy>4e-5</iyy><iyz>0</iyz>
+          <izz>8e-5</izz>
+        </inertia>
+      </inertial>
+
+      <collision name="collision">
+        <geometry>
+          <cylinder><radius>0.127</radius><length>0.002</length></cylinder>
+        </geometry>
+      </collision>
+
+      <visual name="motor">
+        <pose>0 0 -0.025 0 0 0</pose>
+        <geometry>
+          <cylinder><radius>0.015</radius><length>0.03</length></cylinder>
+        </geometry>
+        <material>
+          <ambient>0.1 0.1 0.1 1</ambient>
+          <diffuse>0.1 0.1 0.1 1</diffuse>
+        </material>
+      </visual>
+
+      <visual name="axle">
+        <pose>0 0 -0.005 0 0 0</pose>
+        <geometry>
+          <cylinder><radius>0.002</radius><length>0.01</length></cylinder>
+        </geometry>
+        <material>
+          <ambient>0.1 0.1 0.1 1</ambient>
+          <diffuse>0.1 0.1 0.1 1</diffuse>
+        </material>
+      </visual>
+
+      <visual name="blade">
+        <geometry>
+          <box><size>0.25 0.03 0.002</size></box>
+        </geometry>
+        <material>
+          <ambient>0.1 0.1 0.1 1</ambient>
+          <diffuse>0.1 0.1 0.1 1</diffuse>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>
